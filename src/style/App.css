@@ -1,0 +1,12 @@
+.App {
+    background: black;
+    color: white;
+    height: 100vh;
+    left: 0;
+    overflow-y: scroll;
+    padding: 35px 40px 55px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
