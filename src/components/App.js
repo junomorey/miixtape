@@ -8,7 +8,6 @@ import {isValidArtist, initAndFillPlaylist} from '../js/utils';
 import {MIN_ARTISTS, MAX_ARTISTS} from '../js/constants';
 
 import ArtistTable from './ArtistTable';
-import Login from './Login';
 import SearchBar from './SearchBar';
 import TitleInput from './TitleInput';
 import MessageInput from './MessageInput';
@@ -134,7 +133,6 @@ class App extends Component {
 		return (
 			<div className="App">
 				{this.renderFlash()}
-				<Login />
 				<div className="InputContainer">
 					<TitleInput updateTitle={this.updateTitle}/>
 					<MessageInput updateMessage={this.updateMessage}/>
