@@ -1,6 +1,7 @@
 export const MAX_RELATED_ARTISTS = 2;
 export const MAX_TRACKS_PER_ARTIST = 40;
 export const FIND_SONGS_TIMEOUT = 150;
+export const MAX_TITLE_LENGTH = 100;
 export const MAX_MESSAGE_LENGTH = 20;
 export const MIN_ARTISTS = 3;
 export const MAX_ARTISTS = 10;

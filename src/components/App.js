@@ -29,8 +29,7 @@ class App extends Component {
 			playlistName: '',
 			message: '',
 			createPlaylistClicked: false,
-			invalidArtist: '',
-			invalidMessage: false,
+			invalidArtist: ''
 		};
 		this.addArtist = this.addArtist.bind(this);
 		this.removeArtist = this.removeArtist.bind(this);
@@ -94,10 +93,10 @@ class App extends Component {
 
 	createPlaylist() {
 		this.setState({ createPlaylistClicked: true });
-		if (!/^[a-zA-Z]+$/.test(this.state.message)) {
-			this.setState({ invalidMessage: true });
-		} else if (this.state.artistNames.length >= MIN_ARTISTS) {
-			this.setState({ invalidMessage: false });
+		let fieldsFilled = this.state.playlistName !== '' || this.state.message !== '';
+		let minArtists = this.state.artistNames.length >= MIN_ARTISTS;
+		let validMessage = /^[a-zA-Z]+$/.test(this.state.message)
+		if (fieldsFilled && minArtists && validMessage) {
 			let artistNames = this.state.artistNames;
 			let playlistName = this.state.playlistName;
 			let message = this.state.message;
@@ -111,16 +110,22 @@ class App extends Component {
 
 	renderFlash() {
 		if (this.state.createPlaylistClicked) {
-			if (this.state.artistNames.length < MIN_ARTISTS){
+			if (this.state.playlistName === '' || this.state.message === '') {
 				return (
 					<div className="alert alert-danger">
-					  <strong>Please enter at least {MIN_ARTISTS} artists.</strong>
+					  <strong>Please fill all fields.</strong>
 					</div>
 				);
-			} else if (this.state.invalidMessage) {
+			} else if (!/^[a-zA-Z]+$/.test(this.state.message)) {
 				return (
 					<div className="alert alert-danger">
 					  <strong>Message can only include letters.</strong>
+					</div>
+				);
+			} else if (this.state.artistNames.length < MIN_ARTISTS){
+				return (
+					<div className="alert alert-danger">
+					  <strong>Please enter at least {MIN_ARTISTS} artists.</strong>
 					</div>
 				);
 			} else {

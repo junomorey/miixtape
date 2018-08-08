@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {MAX_TITLE_LENGTH} from '../js/constants';
 import '../style/Input.css';
 
 class TitleInput extends Component {
@@ -9,9 +10,11 @@ class TitleInput extends Component {
 	}
 
 	handleUpdate(event) {
-		this.setState({ text: event.target.value }, () => (
-			this.props.updateTitle(this.state.text)
-		));
+		if (event.target.value.length < MAX_TITLE_LENGTH) {
+			this.setState({ text: event.target.value }, () => (
+				this.props.updateTitle(this.state.text)
+			));
+		}
 	}
 
 	render() {
