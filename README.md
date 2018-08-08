@@ -5,4 +5,4 @@ Mixxtape generates a Spotify playlist that spells out a custom message using son
 
 Built using the Spotify Web API and ReactJS.
 
-It's a work in progress, and new features are coming soon!
+New features coming soon!
