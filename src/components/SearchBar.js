@@ -33,7 +33,7 @@ class SearchBar extends Component {
 		if (this.props.nextArtistNum === MAX_ARTISTS + 1) {
 			return '(' + MAX_ARTISTS.toString() + ' Artist Maximum)' 
 		} else {
-			return "Artist " + this.props.nextArtistNum.toString();
+			return "Enter artist " + this.props.nextArtistNum.toString() + ':';
 		}
 	}
 

@@ -22,7 +22,7 @@ class MessageInput extends Component {
 			<div className="Input">
 				<input
 				 	type="text"
-				 	placeholder="Mixtape message"
+				 	placeholder="Type the mixtape message."
 					onChange={this.handleUpdate}
 					value={this.state.text}
 				/>

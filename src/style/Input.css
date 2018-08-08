@@ -6,4 +6,5 @@ input[type=text] {
     font-size: 80px;
     font-weight: 800;
     outline: none;
+    width: 100%;
 }

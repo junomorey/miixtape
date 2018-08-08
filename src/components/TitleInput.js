@@ -19,7 +19,7 @@ class TitleInput extends Component {
 			<div className="Input">
 				<input
 					type="text"
-					placeholder="Mixtape name"
+					placeholder="Type the mixtape name."
 					onChange={this.handleUpdate}
 					value={this.state.text}
 					autoFocus
