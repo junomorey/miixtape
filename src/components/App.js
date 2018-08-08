@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import '../style/App.css';
 import '../style/InputContainer.css';
 import {isValidArtist, initAndFillPlaylist} from '../js/utils';
-import {MAX_ARTISTS} from '../js/constants';
+import {MIN_ARTISTS, MAX_ARTISTS} from '../js/constants';
 
 import ArtistTable from './ArtistTable';
 import Login from './Login';
@@ -93,11 +93,13 @@ class App extends Component {
 	}
 
 	createPlaylist() {
-		let artistNames = this.state.artistNames;
-		let playlistName = this.state.playlistName;
-		let message = this.state.message;
-		initAndFillPlaylist(spotifyApi, artistNames, playlistName, message);
 		this.setState({ createPlaylistClicked: true });
+		if (this.state.artistNames.length >= MIN_ARTISTS) {
+			let artistNames = this.state.artistNames;
+			let playlistName = this.state.playlistName;
+			let message = this.state.message;
+			initAndFillPlaylist(spotifyApi, artistNames, playlistName, message);	
+		}	
 	}
 
 	getNextArtistNum() {
@@ -106,11 +108,19 @@ class App extends Component {
 
 	renderFlash() {
 		if (this.state.createPlaylistClicked) {
-			return (
-				<div className="alert alert-success">
-				  <strong>Check your playlists for your mixtape!</strong>
-				</div>
-			);
+			if (this.state.artistNames.length < MIN_ARTISTS){
+				return (
+					<div className="alert alert-danger">
+					  <strong>Please enter at least {MIN_ARTISTS} artists.</strong>
+					</div>
+				);
+			} else {
+				return (
+					<div className="alert alert-success">
+					  <strong>Check your playlists for your mixtape!</strong>
+					</div>
+				);	
+			}
 		} else if (this.state.invalidArtist !== '') {
 			return (
 				<div className="alert alert-danger">

@@ -6,15 +6,11 @@ class Login extends Component {
 		super(props);
 	}
 
-	handleClick(event) {
-
-	}
-
 	render() {
 		return (
 			<div className="Login">
 				<button type="button" className="btn btn-outline-success">
-					<a href={process.env.LOGIN_URI}>Login with Spotify</a>
+					<a href='http://localhost:8888/login'>Login with Spotify</a>
 				</button>
 			</div>
 		);

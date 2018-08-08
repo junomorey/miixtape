@@ -1,9 +1,10 @@
 export const MAX_RELATED_ARTISTS = 2;
 export const MAX_TRACKS_PER_ARTIST = 40;
 export const FIND_SONGS_TIMEOUT = 150;
-export const MAX_MESSAGE_LENGTH = 30;
+export const MAX_MESSAGE_LENGTH = 20;
+export const MIN_ARTISTS = 3;
 export const MAX_ARTISTS = 10;
-export const ADD_SONGS_TIMEOUT = 200 + FIND_SONGS_TIMEOUT * (MAX_ARTISTS + (MAX_ARTISTS * MAX_RELATED_ARTISTS));
+export const ADD_SONGS_TIMEOUT = 1000;
 export const BACKUP_TRACKS = {	
 	"A": "spotify:track:3iVcZ5G6tvkXZkZKlMpIUs",
 	"B": "spotify:track:5MChi9fdCbTIWDJPPUuuW6",
