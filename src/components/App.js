@@ -18,12 +18,6 @@ spotifyApi.setPromiseImplementation(Q);
 class App extends Component {
 	constructor(props) {
 		super(props);
-		const params = this.getHashParams();
-		if (params.access_token) {
-			spotifyApi.setAccessToken(params.access_token);
-		} else {
-			console.error('no access token');
-		}
 		this.state = { 
 			artistNames: [],
 			playlistName: '',
@@ -38,6 +32,15 @@ class App extends Component {
 		this.updateTitle = this.updateTitle.bind(this);
 		this.getNextArtistNum = this.getNextArtistNum.bind(this);
 		this.renderFlash = this.renderFlash.bind(this);
+	}
+
+	componentDidMount() {
+		const params = this.getHashParams();
+		if (params.access_token) {
+			spotifyApi.setAccessToken(params.access_token);
+		} else {
+			console.error('no access token');
+		}
 	}
 
 	getHashParams() {
