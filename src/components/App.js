@@ -30,6 +30,7 @@ class App extends Component {
 			message: '',
 			createPlaylistClicked: false,
 			invalidArtist: '',
+			invalidMessage: false,
 		};
 		this.addArtist = this.addArtist.bind(this);
 		this.removeArtist = this.removeArtist.bind(this);
@@ -56,7 +57,7 @@ class App extends Component {
     }
 
     updateMessage(newMessage) {
-    	let formattedMsg = newMessage.replace(/\s/g, '').toUpperCase();
+		let formattedMsg = newMessage.replace(/\s/g, '').toUpperCase();
     	this.setState({ message: formattedMsg} );
     	this.setState({ createPlaylistClicked: false });
     }
@@ -93,7 +94,10 @@ class App extends Component {
 
 	createPlaylist() {
 		this.setState({ createPlaylistClicked: true });
-		if (this.state.artistNames.length >= MIN_ARTISTS) {
+		if (!/^[a-zA-Z]+$/.test(this.state.message)) {
+			this.setState({ invalidMessage: true });
+		} else if (this.state.artistNames.length >= MIN_ARTISTS) {
+			this.setState({ invalidMessage: false });
 			let artistNames = this.state.artistNames;
 			let playlistName = this.state.playlistName;
 			let message = this.state.message;
@@ -113,13 +117,19 @@ class App extends Component {
 					  <strong>Please enter at least {MIN_ARTISTS} artists.</strong>
 					</div>
 				);
+			} else if (this.state.invalidMessage) {
+				return (
+					<div className="alert alert-danger">
+					  <strong>Message can only include letters.</strong>
+					</div>
+				);
 			} else {
 				return (
 					<div className="alert alert-success">
 					  <strong>Check your playlists for your mixtape!</strong>
 					</div>
 				);	
-			}
+			} 
 		} else if (this.state.invalidArtist !== '') {
 			return (
 				<div className="alert alert-danger">
